@@ -12,16 +12,16 @@ namespace Sandstorm\GedmoTranslatableConnector;
  *                                                                            */
 
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-use TYPO3\Flow\Reflection\ClassSchema;
-use TYPO3\Flow\Reflection\ObjectAccess;
+use Neos\Flow\Reflection\ClassSchema;
+use Neos\Flow\Reflection\ObjectAccess;
 
 /**
  * Class Package; reconfiguring TYPO3 Flow for use with Gedmo Translatable
  *
  * @package Sandstorm\GedmoTranslatableConnector
  */
-class Package extends \TYPO3\Flow\Package\Package {
-	public function boot(\TYPO3\Flow\Core\Bootstrap $bootstrap) {
+class Package extends \Neos\Flow\Package\Package {
+	public function boot(\Neos\Flow\Core\Bootstrap $bootstrap) {
 
 		// 1. Make Gedmo\Translatable\Entity\Translation known to Doctrine, so that it can participate in Database Schema Generation
 		//
@@ -30,7 +30,7 @@ class Package extends \TYPO3\Flow\Package\Package {
 		//
 		// Note: We replace FlowAnnotationDriver *on a very low level* with the *MappingDriverChain* object; because this class
 		// is only used inside EntityManagerFactory -- so we know quite exactly what methods are called on that object.
-		$bootstrap->getSignalSlotDispatcher()->connect('TYPO3\Flow\Core\Booting\Sequence', 'beforeInvokeStep', function($step) use($bootstrap) {
+		$bootstrap->getSignalSlotDispatcher()->connect('Neos\Flow\Core\Booting\Sequence', 'beforeInvokeStep', function($step) use($bootstrap) {
 			if ($step->getIdentifier() === 'typo3.flow:resources') {
 				$flowAnnotationDriver = $bootstrap->getObjectManager()->get('TYPO3\Flow\Persistence\Doctrine\Mapping\Driver\FlowAnnotationDriver');
 
@@ -55,4 +55,4 @@ class Package extends \TYPO3\Flow\Package\Package {
 			}
 		});
 	}
-} 
+}
