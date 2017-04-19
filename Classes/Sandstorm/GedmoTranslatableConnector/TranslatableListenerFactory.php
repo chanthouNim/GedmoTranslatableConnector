@@ -23,13 +23,13 @@ use Gedmo\Translatable\TranslatableListener;
 class TranslatableListenerFactory {
 
 	/**
-	 * @Flow\InjectConfiguration(path="defaultLocale")
+	 * @Flow\InjectConfiguration("defaultLocale")
 	 * @var string
 	 */
 	protected $defaultLocale;
 
 	/**
-	 * @Flow\InjectConfiguration(path="locale")
+	 * @Flow\InjectConfiguration("locale")
 	 * @var string
 	 */
 	protected $locale;

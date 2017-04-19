@@ -30,4 +30,4 @@ class MappingDriverChainWithFlowAnnotationDriverAsDefault extends MappingDriverC
 	public function setEntityManager(\Doctrine\Common\Persistence\ObjectManager $entityManager) {
 		$this->getDefaultDriver()->setEntityManager($entityManager);
 	}
-}
+} 
